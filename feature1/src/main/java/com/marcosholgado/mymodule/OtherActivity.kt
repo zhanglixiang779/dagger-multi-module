@@ -12,11 +12,13 @@ class OtherActivity : AppCompatActivity() {
     lateinit var expensiveObject: ExpensiveObject
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_other)
 
         DaggerFeature1Component
             .factory()
             .create(provideCoreComponent(application))
+            .inject(this)
+
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_other)
     }
 }

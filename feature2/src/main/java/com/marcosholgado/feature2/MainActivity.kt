@@ -14,12 +14,14 @@ class MainActivity : AppCompatActivity() {
     lateinit var expensiveObject: ExpensiveObject
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         DaggerFeature2Component
             .factory()
             .create(provideCoreComponent(application))
+            .inject(this)
+
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
         button.setOnClickListener {
             (application as? CoreNavigation)?.startOtherActivity()
