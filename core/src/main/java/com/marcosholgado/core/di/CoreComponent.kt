@@ -7,5 +7,11 @@ import javax.inject.Singleton
 @Component(modules = [CoreModule::class])
 @Singleton
 interface CoreComponent {
+
+    @Component.Factory
+    interface Factory {
+        fun create(): CoreComponent
+    }
+
     fun getExpensiveObject(): ExpensiveObject
 }

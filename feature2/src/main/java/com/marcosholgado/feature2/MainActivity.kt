@@ -18,10 +18,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         DaggerFeature2Component
-            .builder()
-            .coreComponent(provideCoreComponent(application))
-            .build()
-            .inject(this)
+            .factory()
+            .create(provideCoreComponent(application))
 
         button.setOnClickListener {
             (application as? CoreNavigation)?.startOtherActivity()

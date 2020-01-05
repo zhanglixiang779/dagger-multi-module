@@ -16,9 +16,7 @@ class OtherActivity : AppCompatActivity() {
         setContentView(R.layout.activity_other)
 
         DaggerFeature1Component
-            .builder()
-            .coreComponent(provideCoreComponent(application))
-            .build()
-            .inject(this)
+            .factory()
+            .create(provideCoreComponent(application))
     }
 }

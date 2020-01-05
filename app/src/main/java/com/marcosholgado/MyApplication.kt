@@ -16,9 +16,10 @@ class MyApplication : Application(), CoreComponentProvider, CoreNavigation {
     override fun provideCoreComponent(): CoreComponent {
         if (!this::coreComponent.isInitialized) {
             coreComponent = DaggerCoreComponent
-                .builder()
-                .build()
+                .factory()
+                .create()
         }
+
         return coreComponent
     }
 
